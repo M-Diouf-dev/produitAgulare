@@ -1,9 +1,11 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { FormulaireAjout } from "./components/formulaire_ajout/formulaire_ajout";
+import { NavBar } from "./components/nav-bar/nav-bar";
+import { Produits } from "./components/produits/produits";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [FormulaireAjout, NavBar, Produits],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
