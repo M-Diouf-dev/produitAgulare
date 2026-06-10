@@ -3,7 +3,7 @@
     <div class="col mb-3">
         <p>nombre total de produit = <span class="badge bg-primary ms-2">{{produits.length}}</span> </p>
         <div class="col-md-4 ">
-            <a routerLink="ajouter" class="btn btn-success mb-2">
+            <a routerLink="/ajouter" class="btn btn-success mb-2">
                 <i class="bi bi-plus-lg"></i> Ajouter un produit
             </a>
         </div>
@@ -54,12 +54,12 @@
                         <button (click)="delete(produit)" class="btn btn-danger">
                             <i class="bi bi-trash"></i>
                         </button>
-                        <button (click)="update(produit)" class="btn btn-warning">
+                        <a routerLink="/modifier/{{ produit.id }}" class="btn btn-warning">
                             <i class="bi bi-pencil"></i>
-                        </button>
-                        <button (click)="viewDetails(produit)" class="btn btn-info border-info">
+                        </a>
+                        <a routerLink="/details/{{ produit.id }}" class="btn btn-info border-info">
                             <i class="bi bi-eye"></i>
-                        </button>
+                        </a>
                     </td>
                 </tr>
                 }
