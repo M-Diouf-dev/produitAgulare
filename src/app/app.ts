@@ -2,10 +2,11 @@ import { Component, signal } from '@angular/core';
 import { FormulaireAjout } from "./components/formulaire_ajout/formulaire_ajout";
 import { NavBar } from "./components/nav-bar/nav-bar";
 import { Produits } from "./components/produits/produits";
+import { RouterOutlet } from "@angular/router";
 
 @Component({
   selector: 'app-root',
-  imports: [FormulaireAjout, NavBar, Produits],
+  imports: [FormulaireAjout, NavBar, Produits,RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

@@ -3,9 +3,9 @@
     <div class="col mb-3">
         <p>nombre total de produit = <span class="badge bg-primary ms-2">{{produits.length}}</span> </p>
         <div class="col-md-4 ">
-            <button (click)="ajouter()" class="btn btn-success mb-2">
+            <a routerLink="ajouter" class="btn btn-success mb-2">
                 <i class="bi bi-plus-lg"></i> Ajouter un produit
-            </button>
+            </a>
         </div>
     </div>
     <div class="table-responsive">
@@ -67,4 +67,3 @@
         </table>
     </div>
 </div>
-<router-outlet></router-outlet>
