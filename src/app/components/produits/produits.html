@@ -67,7 +67,7 @@
                 <td>{{ produit.categorie }}</td>
                 <td>{{ produit.description }}</td>
                 <td class="d-flex gap-2">
-                    <button onclick="delete(produit)" class="btn btn-danger">
+                    <button (click)="suprimer(produit.id)" class="btn btn-danger">
                         <i class="bi bi-trash"></i>
                     </button>
                     <a routerLink="/modifier/{{ produit.id }}" class="btn btn-warning">

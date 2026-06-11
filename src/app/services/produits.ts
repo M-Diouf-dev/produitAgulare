@@ -46,5 +46,8 @@ export class ProduitService {
     const nouveauId = Math.max(...this.produits().map(p => p.id)) + 1;
     this._produits.update(liste => [...liste, { ...produit, id: nouveauId }]);
   }
+  supprimer(id: number): void {
+    this._produits.update(liste =>liste.filter(p =>p.id !=id ));
+  }
 
 }
