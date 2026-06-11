@@ -27,6 +27,7 @@
         <thead class="table-dark">
             <tr style="text-align: center;">
                 <th>Nom du produit</th>
+                <th>ID</th>
                 <th>Prix</th>
                 <th>Stock</th>
                 <th>Actif</th>
@@ -35,9 +36,10 @@
                 <th>Actions</th>
             </tr>
         </thead>
-        <tbody>
-            @for (produit of produits; track produit.id) {
+        <tbody style="text-align: center;">
+            @for (produit of produits(); track produit.id) {
             <tr style="background: beige;">
+                <td>{{ produit.id }}</td>
                 <td>{{ produit.nom }}</td>
                 <td>{{ produit.prix }}</td>
                 <td>
@@ -65,7 +67,7 @@
                 <td>{{ produit.categorie }}</td>
                 <td>{{ produit.description }}</td>
                 <td class="d-flex gap-2">
-                    <button (click)="delete(produit)" class="btn btn-danger">
+                    <button onclick="delete(produit)" class="btn btn-danger">
                         <i class="bi bi-trash"></i>
                     </button>
                     <a routerLink="/modifier/{{ produit.id }}" class="btn btn-warning">
@@ -82,5 +84,5 @@
     </table>
 </div>
 <div class="col mb-3">
-    <p>nombre total de produit = <span class="badge bg-primary ms-2">{{produits.length}}</span> </p>
+    <p>nombre total de produit = <span class="badge bg-primary ms-2">{{produits().length}}</span> </p>
 </div>

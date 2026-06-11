@@ -1,0 +1,50 @@
+import { Injectable, signal } from '@angular/core';
+import { Produit } from '../models/produit';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class ProduitService {
+  categories = ["ordinateur", "mobile", "accessoire"];
+  //signal permet de gerer et de notifier l'etat des donnees
+  _produits = signal<Produit[]>([
+    {
+      id: 1,
+      nom: "Dell",
+      prix: 140000,
+      stock: 10,
+      actif: true,
+      categorie: this.categories[0],
+      description: "Avec des Dells de haut qualite"
+    },
+    {
+      id: 2,
+      nom: "sumsung",
+      prix: 60000,
+      stock: 5,
+      actif: true,
+      categorie: this.categories[1],
+      description: "bienvenue chez samsung pro"
+    },
+    {
+      id: 3,
+      nom: "montre",
+      prix: 30000,
+      stock: 0,
+      actif: false,
+      categorie: this.categories[2],
+      description: "montre de luxe chez Ndeye Coumba"
+    }
+
+  ]);
+
+  readonly produits = this._produits.asReadonly();//lire toutes les donnees en lecture seule
+
+  // methode ajouter() pour ajouter un produit avec l'incrementation de son id
+  ajouter(produit: Omit<Produit, 'id'>): void {
+    //l'auto-incrementation du dernier id
+    const nouveauId = Math.max(...this.produits().map(p => p.id)) + 1;
+    this._produits.update(liste => [...liste, { ...produit, id: nouveauId }]);
+  }
+
+}
