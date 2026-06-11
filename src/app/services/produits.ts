@@ -46,8 +46,16 @@ export class ProduitService {
     const nouveauId = Math.max(...this.produits().map(p => p.id)) + 1;
     this._produits.update(liste => [...liste, { ...produit, id: nouveauId }]);
   }
+  //suppression
   supprimer(id: number): void {
     this._produits.update(liste =>liste.filter(p =>p.id !=id ));
   }
-
+  // modification 
+  modifier(produit:Produit) :void{
+    this._produits.update(liste=>liste.map(p =>p.id === produit.id?{...produit}:p));
+  }
+  //recuperer un produit par son id
+  getProduitById(id:number): Produit | undefined {
+    return this._produits().find(p => p.id === id);
+}  
 }

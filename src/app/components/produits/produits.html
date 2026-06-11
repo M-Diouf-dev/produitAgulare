@@ -26,8 +26,9 @@
     <table class="table table-bordered mb-0 table-hover">
         <thead class="table-dark">
             <tr style="text-align: center;">
-                <th>Nom du produit</th>
+                
                 <th>ID</th>
+                <th>Nom du produit</th>
                 <th>Prix</th>
                 <th>Stock</th>
                 <th>Actif</th>
@@ -70,9 +71,9 @@
                     <button (click)="suprimer(produit.id)" class="btn btn-danger">
                         <i class="bi bi-trash"></i>
                     </button>
-                    <a routerLink="/modifier/{{ produit.id }}" class="btn btn-warning">
+                    <button (click)="modifierProduit(produit.id)" class="btn btn-warning">
                         <i class="bi bi-pencil"></i>
-                    </a>
+                    </button>
                     <a routerLink="/details/{{ produit.id }}" class="btn btn-info border-info">
                         <i class="bi bi-eye"></i>
                     </a>

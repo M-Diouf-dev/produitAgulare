@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Produit } from '../../models/produit';
-import { RouterLink, RouterOutlet } from "@angular/router";
+import { Router, RouterLink, RouterOutlet } from "@angular/router";
 import { ProduitService } from '../../services/produits';
 
 @Component({
@@ -12,6 +12,7 @@ import { ProduitService } from '../../services/produits';
 export class Produits {
   // l'injecter pour acceder au services
   produitService = inject(ProduitService);
+  route= inject(Router);
 
   // le redonly dans service
   //pour utiliser produits ailleur on met des () ex: produits()
@@ -66,6 +67,9 @@ export class Produits {
     if (c) {
       this.produitService.supprimer(id);
     }
+  }
+  modifierProduit(id:number): void {
+    this.route.navigate(['/modifier/:id']);
   }
 }
 
