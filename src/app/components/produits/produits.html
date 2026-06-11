@@ -1,69 +1,86 @@
 <div class="container-fluid py-4">
-    <h2>Gestion des produits</h2>
-    <div class="col mb-3">
-        <p>nombre total de produit = <span class="badge bg-primary ms-2">{{produits.length}}</span> </p>
+    <nav class="navbar bg-primary px-3">
         <div class="col-md-4 ">
             <a routerLink="/ajouter" class="btn btn-success mb-2">
                 <i class="bi bi-plus-lg"></i> Ajouter un produit
             </a>
         </div>
-    </div>
-    <div class="table-responsive">
-        <table class="table table-bordered mb-0 table-hover">
-            <thead class="table-dark">
-                <tr style="text-align: center;">
-                    <th>Nom du produit</th>
-                    <th>Prix</th>
-                    <th>Stock</th>
-                    <th>Actif</th>
-                    <th>Catégorie</th>
-                    <th>Description</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @for (produit of produits; track produit.id) {
-                <tr style="background: beige;">
-                    <td>{{ produit.nom }}</td>
-                    <td>{{ produit.prix }}</td>
-                    <td>
-                        @switch (true) {
-                        @case (produit.stock === 0){
-                        <span class="badge bg-danger-subtle border-danger text-black">Rupture de stock</span>
-                        }
+        <a class="navbar-brand text-white fw-bold" routerLink="/">
+            Gestion Produits
+        </a>
+        <div class="d-flex align-items-center gap-2">
+            <a class="btn btn-outline-light" routerLink="/accueil">
+                Accueil
+            </a>
+            <a class="btn btn-outline-light" routerLink="/contact">
+                Contact
+            </a>
+            <input type="text" class="form-control" placeholder="Rechercher...">
+            <button class="btn btn-warning">
+                Recherche
+            </button>
+        </div>
+    </nav>
+</div>
+<div class="table-responsive">
+    <table class="table table-bordered mb-0 table-hover">
+        <thead class="table-dark">
+            <tr style="text-align: center;">
+                <th>Nom du produit</th>
+                <th>Prix</th>
+                <th>Stock</th>
+                <th>Actif</th>
+                <th>Catégorie</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (produit of produits; track produit.id) {
+            <tr style="background: beige;">
+                <td>{{ produit.nom }}</td>
+                <td>{{ produit.prix }}</td>
+                <td>
+                    @switch (true) {
+                    @case (produit.stock === 0){
+                    <span class="badge bg-danger-subtle border-danger text-black">Rupture de stock</span>
+                    }
 
-                        @case (produit.stock > 0 && produit.stock <= 5){ <span
-                            class="badge bg-warning-subtle border-warning text-black">Stock faible</span>
-                            }
-                            @default{
-                            <span class="badge bg-success-subtle border-success">{{ produit.stock }}</span>
-                            }
-                            }
-                    </td>
-                    <td>
-                        @if(produit.actif){
-                        <span class="badge bg-success-subtle border-success">actif</span>
+                    @case (produit.stock > 0 && produit.stock <= 5){ <span
+                        class="badge bg-warning-subtle border-warning text-black">Stock faible</span>
                         }
-                        @else {
-                        <span class="badge bg-danger-subtle border-danger text-black">inactif</span>
+                        @default{
+                        <span class="badge bg-success-subtle border-success">{{ produit.stock }}</span>
                         }
-                    </td>
-                    <td>{{ produit.categorie }}</td>
-                    <td>{{ produit.description }}</td>
-                    <td class="d-flex gap-2">
-                        <button (click)="delete(produit)" class="btn btn-danger">
-                            <i class="bi bi-trash"></i>
-                        </button>
-                        <a routerLink="/modifier/{{ produit.id }}" class="btn btn-warning">
-                            <i class="bi bi-pencil"></i>
-                        </a>
-                        <a routerLink="/details/{{ produit.id }}" class="btn btn-info border-info">
-                            <i class="bi bi-eye"></i>
-                        </a>
-                    </td>
-                </tr>
-                }
-            </tbody>
-        </table>
-    </div>
+                        }
+                </td>
+                <td>
+                    @if(produit.actif){
+                    <span class="badge bg-success-subtle border-success">actif</span>
+                    }
+                    @else {
+                    <span class="badge bg-danger-subtle border-danger text-black">inactif</span>
+                    }
+                </td>
+                <td>{{ produit.categorie }}</td>
+                <td>{{ produit.description }}</td>
+                <td class="d-flex gap-2">
+                    <button (click)="delete(produit)" class="btn btn-danger">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                    <a routerLink="/modifier/{{ produit.id }}" class="btn btn-warning">
+                        <i class="bi bi-pencil"></i>
+                    </a>
+                    <a routerLink="/details/{{ produit.id }}" class="btn btn-info border-info">
+                        <i class="bi bi-eye"></i>
+                    </a>
+                </td>
+            </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+<div class="col mb-3">
+    <p>nombre total de produit = <span class="badge bg-primary ms-2">{{produits.length}}</span> </p>
 </div>
