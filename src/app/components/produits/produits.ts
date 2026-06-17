@@ -71,6 +71,9 @@ export class Produits {
   modifierProduit(id: number): void {
     this.route.navigate(['modifier', id]);  // ← passe l'ID dynamiquement
   }
+  detaillerProduit(id :number){
+    this.route.navigate(['details',id])
+  }
 }
 
 

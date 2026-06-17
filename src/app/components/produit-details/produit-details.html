@@ -1,1 +1,23 @@
-<h1>Details produits</h1>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    @if(detailProduit){
+        <p><strong>Id :</strong>{{detailProduit.id}} </p>
+        <p><strong>Nom Produit :</strong>{{detailProduit.nom}} </p>
+        <p><strong>Prix :</strong>{{detailProduit.prix}} </p>
+        <p><strong>Stock :</strong>{{detailProduit.stock}} </p>
+        <p><strong>Actif :</strong>{{detailProduit.actif}} </p>
+        <p><strong>Categorie :</strong>{{detailProduit.categorie}} </p>
+        <p><strong>Description :</strong>{{detailProduit.description}} </p>
+
+    }
+</body>
+
+</html>
