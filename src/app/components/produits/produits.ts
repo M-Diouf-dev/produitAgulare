@@ -12,7 +12,7 @@ import { ProduitService } from '../../services/produits';
 export class Produits {
   // l'injecter pour acceder au services
   produitService = inject(ProduitService);
-  route= inject(Router);
+  route = inject(Router);
 
   // le redonly dans service
   //pour utiliser produits ailleur on met des () ex: produits()
@@ -68,8 +68,8 @@ export class Produits {
       this.produitService.supprimer(id);
     }
   }
-  modifierProduit(id:number): void {
-    this.route.navigate(['/modifier/:id']);
+  modifierProduit(id: number): void {
+    this.route.navigate(['modifier', id]);  // ← passe l'ID dynamiquement
   }
 }
 

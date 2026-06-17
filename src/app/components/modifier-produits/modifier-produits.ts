@@ -6,35 +6,35 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-modifier-produits',
-  imports: [RouterLink, RouterOutlet,FormsModule],
+  imports: [RouterLink, RouterOutlet, FormsModule],
   templateUrl: './modifier-produits.html',
   styleUrl: './modifier-produits.css',
 })
 export class ModifierProduits implements OnInit {
   categories = ["ordinateur", "mobile", "accessoire"];
- 
+
   produitService = inject(ProduitService);
   routeur = inject(Router);
   route = inject(ActivatedRoute);
   produitAModifier: Produit | null = null;
 
   modifierProduit(): void {
-    this.produitService.modifier(this.produitAModifier!);
+    if (this.produitAModifier) {
+      this.produitService.modifier(this.produitAModifier);
+      this.routeur.navigate(['/']);  // ← redirige après modification
+    }
   }
 
   ngOnInit(): void {
-      // Récupérer l'ID du produit à modifier à partir de l'URL
-      const nouveauProduitId=this.route.snapshot.paramMap.get('id');
-      
-        const id=Number(nouveauProduitId);
-        const produitAModifier = this.produitService.getProduitById(id);
-        if (produitAModifier) {
-          this.produitAModifier = { ...produitAModifier };
-        } else {
-          console.error("Produit non trouvé avec l'ID:", id);
-          this.routeur.navigate(['/produits']);
-        }
-        
-      }
-  }
+    const nouveauProduitId = this.route.snapshot.paramMap.get('id');
+    const id = Number(nouveauProduitId);
+    const produitAModifier = this.produitService.getProduitById(id);
 
+    if (produitAModifier) {
+      this.produitAModifier = { ...produitAModifier };
+    } else {
+      console.error("Produit non trouvé avec l'ID:", id);
+      this.routeur.navigate(['/']);  // ← cohérent avec le reste
+    }
+  }
+}

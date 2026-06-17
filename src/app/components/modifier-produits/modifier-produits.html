@@ -2,52 +2,47 @@
     <div class="col mb-3 text-center">
         <h2 class="btn btn-primary">Modifier un produit</h2>
     </div>
-    <form #ajoutForm="ngForm" class="col-md-6 bg-light p-4 rounded shadow mx-auto" (ngSubmit)="modifierProduit()">
 
-        <div class="mb-3">
-            <label for="nom" class="form-label">Nom du produit</label>
-            <input type="text" class="form-control" id="nom" name="nom" value="{{ produitAModifier?.nom }}"
-                [(ngModel)]="produitAModifier.nom ">
-        </div>
-        <div class="mb-3">
-            <label for="prix" class="form-label">Prix</label>
-            <input type="number" class="form-control" id="prix" name="prix" value="{{ produitAModifier?.prix }}"
-                [(ngModel)]="produitAModifier.prix">
-        </div>
-        <div class="mb-3">
-            <label for="stock" class="form-label">Stock</label>
-            <input type="number" class="form-control" id="stock" name="stock" value="{{ produitAModifier?.stock }}"
-                [(ngModel)]="produitAModifier.stock">
-        </div>
-        <div class="mb-3">
-            <label for="actif" class="form-label">Actif</label>
-            <select class="form-select" id="actif" name="actif" [(ngModel)]="produitAModifier.actif"
-                value="{{ produitAModifier?.actif }}">
-                <option value="true">Oui</option>
-                <option value="false">Non</option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label for="categorie" class="form-label">Catégorie</label>
-            <select class="form-select" id="categorie" name="categorie" [(ngModel)]="produitAModifier.categorie"
-                value="{{ produitAModifier?.categorie }}">
-                <option value=""> </option>
-                @for (categorie of categories;track categorie) {
-                <option [value]="categorie">{{ categorie }}</option>
-                }
-
-
-
-            </select>
-        </div>
-        <!-- <div class="mb-3">
-            <label for="description" class="form-label">Description</label>
-            <textarea class="form-control" id="description" rows="3" name="description"
-                [(ngModel)]="produitAModifier.description"></textarea>
-        </div> -->
-        <div class="d-flex justify-content-center ">
-            <button type="submit" class="btn btn-primary">Ajouter</button>
-            <a routerLink="/" class="btn btn-secondary ms-2">Annuler</a>
-        </div>
-    </form>
+    @if (produitAModifier) {
+        <form #ajoutForm="ngForm" class="col-md-6 bg-light p-4 rounded shadow mx-auto" (ngSubmit)="modifierProduit()">
+            <div class="mb-3">
+                <label for="nom" class="form-label">Nom du produit</label>
+                <input type="text" class="form-control" id="nom" name="nom" value="{{produitAModifier.nom}}" [(ngModel)]="produitAModifier.nom">
+            </div>
+            <div class="mb-3">
+                <label for="prix" class="form-label">Prix</label>
+                <input type="number" class="form-control" id="prix" name="prix" value="{{produitAModifier.prix}}" [(ngModel)]="produitAModifier.prix">
+            </div>
+            <div class="mb-3">
+                <label for="stock" class="form-label">Stock</label>
+                <input type="number" class="form-control" id="stock" name="stock" value="{{produitAModifier.stock}}" [(ngModel)]="produitAModifier.stock">
+            </div>
+            <div class="mb-3">
+                <label for="actif" class="form-label">Actif</label>
+                <select class="form-select" id="actif" name="actif" value="{{produitAModifier.actif}}" [(ngModel)]="produitAModifier.actif">
+                    <option [value]="true">Oui</option>
+                    <option [value]="false">Non</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="categorie" class="form-label">Catégorie</label>
+                <select class="form-select" id="categorie" name="categorie" value="{{produitAModifier.categorie}}" [(ngModel)]="produitAModifier.categorie">
+                    <option value=""> </option>
+                    @for (categorie of categories; track categorie) {
+                        <option [value]="categorie">{{ categorie }}</option>
+                    }
+                </select>
+            </div>
+             <div class="mb-3">
+                <label for="stock" class="form-label">Description</label>
+                <input type="text" class="form-control" id="stock" name="description" value="{{produitAModifier.description}}" [(ngModel)]="produitAModifier.description">
+            </div>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary">Modifier</button>
+                <a routerLink="/" class="btn btn-secondary ms-2">Annuler</a>
+            </div>
+        </form>
+    } @else {
+        <p class="text-center text-danger">Chargement du produit...</p>
+    }
 </div>
