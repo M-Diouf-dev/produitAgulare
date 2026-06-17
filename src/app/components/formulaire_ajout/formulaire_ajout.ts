@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
-import { ProduitService } from '../../services/produits';
 import { Produit } from '../../models/produit';
 import { FormsModule } from '@angular/forms';
+import { ProduitService } from '../../services/produits';
 
 @Component({
   selector: 'app-formulaire_ajout',
@@ -23,7 +23,7 @@ export class FormulaireAjout {
     description: ''
   };
   ajouterProduit(): void {
-    this.produitService.ajouter(this.nouveauProduit);
+    //this.produitService.ajouter(this.nouveauProduit);
     console.log("Produit ajouté:", this.nouveauProduit);
     this.route.navigate(["/produits"]);
 

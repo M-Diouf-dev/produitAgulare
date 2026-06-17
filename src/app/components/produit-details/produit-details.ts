@@ -1,9 +1,9 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ProduitService } from '../../services/produits';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Produit } from '../../models/produit';
 import { ModifierProduits } from '../modifier-produits/modifier-produits';
+import { ProduitService } from '../../services/produits';
 
 @Component({
   selector: 'app-produit-details',
@@ -22,7 +22,7 @@ export class ProduitDetails implements OnInit {
     const details = this.route.snapshot.paramMap.get('id')
     const detailId = Number(details)
     if (detailId){
-      this.detailProduit = this.produitservice.getProduitById(detailId)
+      //this.detailProduit = this.produitservice.getProduitById(detailId)
       if(!this.detailProduit){
         this.routeur.navigate(['/'])
       }

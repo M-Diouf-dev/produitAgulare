@@ -11,7 +11,7 @@
   },
   "include": [
     "src/**/*.ts"
-  ],
+, "src/app/services/produits.ts.old"  ],
   "exclude": [
     "src/**/*.spec.ts"
   ]

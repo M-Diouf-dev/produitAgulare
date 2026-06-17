@@ -1,0 +1,31 @@
+{
+  "produits": [
+    {
+      "id": 1,
+      "nom": "Dell",
+      "prix": 140000,
+      "stock": 10,
+      "actif": true,
+      "categorie": "Informatique",
+      "description": "Avec des Dells de haut qualite"
+    },
+    {
+      "id": 2,
+      "nom": "Samsung",
+      "prix": 60000,
+      "stock": 5,
+      "actif": true,
+      "categorie": "Telephone",
+      "description": "Bienvenue chez Samsung Pro"
+    },
+    {
+      "id": 3,
+      "nom": "Montre de lux",
+      "prix": 1000,
+      "stock": 0,
+      "actif": false,
+      "categorie": "Accessoire",
+      "description": "Montre de luxe chez Sokhna Ndeye Coumba Mu selleu mi"
+    }
+  ]
+}
