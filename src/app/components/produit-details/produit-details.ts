@@ -3,6 +3,7 @@ import { ProduitService } from '../../services/produits';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Produit } from '../../models/produit';
+import { ModifierProduits } from '../modifier-produits/modifier-produits';
 
 @Component({
   selector: 'app-produit-details',
@@ -30,6 +31,12 @@ export class ProduitDetails implements OnInit {
       console.log("le produit de cet Id n'existe pas", detailId)
       this.routeur.navigate(['/'])
     }
+    
   }
+  modifierProduit(id:number) :void{
+    this.routeur.navigate(['modifier',id])
+  }
+  
 }
+
 
