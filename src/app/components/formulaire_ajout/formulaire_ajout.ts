@@ -23,10 +23,10 @@ export class FormulaireAjout {
     description: ''
   };
   ajouterProduit(): void {
-    //this.produitService.ajouter(this.nouveauProduit);
+    this.produitService.ajouterProduits(this.nouveauProduit)
     console.log("Produit ajouté:", this.nouveauProduit);
     this.route.navigate(["/produits"]);
 
   }
-  
+
 }

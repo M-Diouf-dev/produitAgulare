@@ -1,7 +1,7 @@
 {
   "produits": [
     {
-      "id": 1,
+      "id": "1",
       "nom": "Dell",
       "prix": 140000,
       "stock": 10,
@@ -10,7 +10,7 @@
       "description": "Avec des Dells de haut qualite"
     },
     {
-      "id": 2,
+      "id": "2",
       "nom": "Samsung",
       "prix": 60000,
       "stock": 5,
@@ -19,13 +19,32 @@
       "description": "Bienvenue chez Samsung Pro"
     },
     {
-      "id": 3,
+      "id": "3",
       "nom": "Montre de lux",
       "prix": 1000,
       "stock": 0,
       "actif": false,
       "categorie": "Accessoire",
       "description": "Montre de luxe chez Sokhna Ndeye Coumba Mu selleu mi"
+    },
+    {
+      "id": "4",
+      "nom": "thinkPad",
+      "prix": 200000,
+      "stock": 23,
+      "actif": true,
+      "categorie": "ordinateur",
+      "description": "chez bien "
+    },
+    {
+      "nom": "",
+      "prix": 0,
+      "stock": 0,
+      "actif": true,
+      "categorie": "",
+      "description": "",
+      "id": "5"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

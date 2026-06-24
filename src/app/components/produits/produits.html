@@ -1,7 +1,7 @@
 <div class="container-fluid py-4">
     <nav class="navbar bg-primary px-3">
         <div class="col-md-4 ">
-            <a routerLink="/ajouter" class="btn btn-success mb-2">
+            <a routerLink="produits/ajouter" class="btn btn-success mb-2">
                 <i class="bi bi-plus-lg"></i> Ajouter un produit
             </a>
         </div>
@@ -26,7 +26,7 @@
     <table class="table table-bordered mb-0 table-hover">
         <thead class="table-dark">
             <tr style="text-align: center;">
-                
+
                 <th>ID</th>
                 <th>Nom du produit</th>
                 <th>Prix</th>
@@ -37,53 +37,39 @@
                 <th>Actions</th>
             </tr>
         </thead>
-        <tbody style="text-align: center;">
-            @for (produit of produits(); track produit.id) {
-            <tr style="background: beige;">
-                <td>{{ produit.id }}</td>
-                <td>{{ produit.nom }}</td>
-                <td>{{ produit.prix }}</td>
-                <td>
-                    @switch (true) {
-                    @case (produit.stock === 0){
-                    <span class="badge bg-danger-subtle border-danger text-black">Rupture de stock</span>
-                    }
+      <tbody style="text-align:center">
 
-                    @case (produit.stock > 0 && produit.stock <= 5){ <span
-                        class="badge bg-warning-subtle border-warning text-black">Stock faible</span>
-                        }
-                        @default{
-                        <span class="badge bg-success-subtle border-success">{{ produit.stock }}</span>
-                        }
-                        }
-                </td>
-                <td>
-                    @if(produit.actif){
-                    <span class="badge bg-success-subtle border-success">actif</span>
-                    }
-                    @else {
-                    <span class="badge bg-danger-subtle border-danger text-black">inactif</span>
-                    }
-                </td>
-                <td>{{ produit.categorie }}</td>
-                <td>{{ produit.description }}</td>
-                <td class="d-flex gap-2">
-                    <!-- <button (click)="suprimer(produit.id)" class="btn btn-danger">
-                        <i class="bi bi-trash"></i>
-                    </button>
-                    <button (click)="modifierProduit(produit.id)" class="btn btn-warning">
-                        <i class="bi bi-pencil"></i>
-                    </button>
-                    <button (click)="detaillerProduit(produit.id)" class="btn btn-info border-info">
-                        <i class="bi bi-eye"></i>
-                    </button> -->
-                </td>
-            </tr>
-            }
+      @for (produit of produitService._produits(); track produit.id) {
 
-        </tbody>
+      <tr>
+        <td>{{ produit.id }}</td>
+        <td>{{ produit.nom }}</td>
+        <td>{{ produit.prix }}</td>
+        <td>{{ produit.stock }}</td>
+        <td>{{ produit.actif }}</td>
+        <td>{{ produit.categorie }}</td>
+        <td>{{ produit.description }}</td>
+        <td class="d-flex gap-2" >
+          <button type="button" class="btn btn-danger" (click)="handleDelete(produit)">
+            <i class="bi bi-trash"></i>
+          </button>
+
+
+
+          <button type="button" class="btn btn-info" (click)="handleDetails(produit)">
+                    <i class="bi bi-eye"></i>
+          </button>
+          <button type="button" class="btn btn-warning" (click)="handleModifier(produit)">
+            <i class="bi bi-pencil"></i>
+          </button>
+        </td>
+      </tr>
+
+      }
+
+      </tbody>
     </table>
 </div>
 <div class="col mb-3">
-    <p>nombre total de produit = <span class="badge bg-primary ms-2">{{produits().length}}</span> </p>
+    <p>nombre total de produit = <span class="badge bg-primary ms-2">{{produitService._produits().length}}</span> </p>
 </div>
